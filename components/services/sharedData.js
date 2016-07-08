@@ -136,7 +136,7 @@ angular.module('app').factory('sharedData', ['$window', '$log', 'models', functi
                         }],
                         ['additionalfunc', {
                             expDisallowed: true,
-                            iconOptions : {nofavorite : true},
+                            iconOptions: {nofavorite: true},
                             options: models.create(
                                 ['additionalfuncOptions', {label: 'Optionen'}]
                             )
@@ -459,9 +459,8 @@ angular.module('app').factory('sharedData', ['$window', '$log', 'models', functi
                             )
                         }],
                         ['additionalfunc', {
-                            iconOptions : {nofavorite : true},
+                            iconOptions: {nofavorite: true},
                             options: models.create(
-
                                 ['additionalfuncOptions', {label: 'Optionen'}]
                             ), expDisallowed: true
                         }]
@@ -516,7 +515,7 @@ angular.module('app').factory('sharedData', ['$window', '$log', 'models', functi
                             expDisallowed: true
                         }],
                         ['additionalfunc', {
-                            iconOptions : {nofavorite : true},
+                            iconOptions: {nofavorite: true},
                             options: models.create(
                                 ['additionalfuncOptions', {label: 'Optionen'}]
                             ), expDisallowed: true
@@ -548,7 +547,7 @@ angular.module('app').factory('sharedData', ['$window', '$log', 'models', functi
                             expDisallowed: true
                         }],
                         ['additionalfunc', {
-                            iconOptions : {nofavorite : true},
+                            iconOptions: {nofavorite: true},
                             options: models.create(
                                 ['additionalfuncOptions', {label: 'Optionen'}]
                             ), expDisallowed: true
@@ -826,19 +825,13 @@ angular.module('app').factory('sharedData', ['$window', '$log', 'models', functi
         angular.merge(option, memento);
     });
 
-    setObjectsAfterParse_forEach(sharedData.rules, 'conditionCollection', sharedData.conditions);
-    setObjectsAfterParse_forEach(sharedData.rules, 'optionCollection', sharedData.allOptions);
-    setObjectsAfterParse_forEach(sharedData.rules, 'sceneCollection', sharedData.scenes);
-    setObjectsAfterParse_forEach(sharedData.scenes, 'optionCollection', sharedData.allOptions);
+    // setObjectsAfterParse_forEach(sharedData.rules, 'conditionCollection', sharedData.conditions);
+    // setObjectsAfterParse_forEach(sharedData.rules, 'optionCollection', sharedData.allOptions);
+    // setObjectsAfterParse_forEach(sharedData.rules, 'sceneCollection', sharedData.scenes);
+    // debugger;
+    setObjectsAfterParse_forEach(sharedData.scenes, 'attachedFunctionalities', sharedData.allRoomFunctionalities);
 
     var scenes_rules = sharedData.scenes.concat(sharedData.rules);
-    scenes_rules.forEach(function (elem) {
-        for (var i = 0; i < elem.optionCollection.length; i++) {
-            elem.optionCollection[i] = sharedData.allOptions.find(function (option) {
-                return option.id == elem.optionCollection[i];
-            });
-        }
-    });
 
     var saveKey = activeUser = users.find(function (user) {
         return user.active;
@@ -873,10 +866,10 @@ angular.module('app').factory('sharedData', ['$window', '$log', 'models', functi
     }
 
     var toLocalStorage = function (event) {
-        writeIdsBeforeStringify_forEach(sharedData.rules, 'conditionCollection');
-        writeIdsBeforeStringify_forEach(sharedData.rules, 'optionCollection');
-        writeIdsBeforeStringify_forEach(sharedData.rules, 'sceneCollection');
-        writeIdsBeforeStringify_forEach(sharedData.scenes, 'optionCollection');
+        // writeIdsBeforeStringify_forEach(sharedData.rules, 'conditionCollection');
+        // writeIdsBeforeStringify_forEach(sharedData.rules, 'optionCollection');
+        // writeIdsBeforeStringify_forEach(sharedData.rules, 'sceneCollection');
+        writeIdsBeforeStringify_forEach(sharedData.scenes, 'attachedFunctionalities');
 
         users = JSON.stringify(sharedData.users);
         sharedData.allOptions.forEach(function (o) {

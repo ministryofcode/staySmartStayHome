@@ -113,9 +113,6 @@ angular.module('app.rules', ['ngRoute'])
                         var index = collection.indexOf(condition);
                         if (index >= 0) {
                             var msg = 'Bedingung "' +condition.label  + '" bereits mit Regel "' + self.selectedRule.label + '" verknüpft';
-                            // $mdToast.show(
-                            //     $mdToast.simple().textContent(msg).hideDelay(3000)
-                            // );
                             $mdToast.showSimple(msg);
                             return;
                         }

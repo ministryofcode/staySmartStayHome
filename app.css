@@ -156,6 +156,8 @@ a {
   z-index: 9999; }
   .globalBookmark md-content {
     background: none !important; }
+  .globalBookmark svg * {
+    fill: #f7f7f7; }
 
 .fabSpeedDialdemoBasicUsage .text-capitalize {
   text-transform: capitalize; }
@@ -176,6 +178,9 @@ a {
 
 .md-dialog-content-body {
   padding: 20px 10px 20px 10px; }
+
+.scenarios svg * {
+  fill: #143B7E; }
 
 /* Header */
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -638,6 +643,12 @@ header {
           @media only screen and (min-width: 1999px) {
             #headerSecond > div .animateLink .getNewInfo > div {
               width: 15px; } }
+    #headerSecond > div .bookmarksShow {
+      position: absolute;
+      top: 0;
+      left: 0; }
+      #headerSecond > div .bookmarksShow button {
+        background: #143B7E; }
     #headerSecond > div .breadcrumbs {
       left: 0;
       right: 0;
@@ -1684,7 +1695,7 @@ footer nav {
       .sh-wrapper > .mainContentTile > div > .sh-icon > * {
         height: 100%;
         width: 100%; }
-    .sh-wrapper > .mainContentTile > div > span:last-of-type {
+    .sh-wrapper > .mainContentTile > div > span:last-of-type, .sh-wrapper > .mainContentTile > div > .beamerSpan {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -1692,19 +1703,19 @@ footer nav {
       width: 100%;
       text-align: center; }
       @media only screen and (max-width: 400px) {
-        .sh-wrapper > .mainContentTile > div > span:last-of-type {
+        .sh-wrapper > .mainContentTile > div > span:last-of-type, .sh-wrapper > .mainContentTile > div > .beamerSpan {
           top: 92%; } }
       @media only screen and (min-width: 400px) and (max-width: 670px) {
-        .sh-wrapper > .mainContentTile > div > span:last-of-type {
+        .sh-wrapper > .mainContentTile > div > span:last-of-type, .sh-wrapper > .mainContentTile > div > .beamerSpan {
           top: 92%; } }
       @media only screen and (min-width: 670px) and (max-width: 1024px) {
-        .sh-wrapper > .mainContentTile > div > span:last-of-type {
+        .sh-wrapper > .mainContentTile > div > span:last-of-type, .sh-wrapper > .mainContentTile > div > .beamerSpan {
           top: 92%; } }
       @media only screen and (min-width: 1024px) and (max-width: 1999px) {
-        .sh-wrapper > .mainContentTile > div > span:last-of-type {
+        .sh-wrapper > .mainContentTile > div > span:last-of-type, .sh-wrapper > .mainContentTile > div > .beamerSpan {
           top: 92%; } }
       @media only screen and (min-width: 1999px) {
-        .sh-wrapper > .mainContentTile > div > span:last-of-type {
+        .sh-wrapper > .mainContentTile > div > span:last-of-type, .sh-wrapper > .mainContentTile > div > .beamerSpan {
           top: 92%; } }
   .sh-wrapper > .mainContentTileWeather > .sh-icon {
     position: absolute;
@@ -1926,6 +1937,10 @@ footer nav {
   width: 100%;
   height: 80%; }
 
+.tileDetails_1_5-3 {
+  width: 100%;
+  height: 50%; }
+
 .tileDetails_2_1 {
   width: 50%;
   height: 100%; }
@@ -1985,7 +2000,8 @@ footer nav {
   /* Lampe */
   /* Rollo */
   /* TV */
-  /* Kühlschrank */ }
+  /* Kühlschrank */
+  /*Security*/ }
   .tileDetails span {
     display: inline-block;
     width: auto; }
@@ -2065,10 +2081,75 @@ footer nav {
     @media only screen and (min-width: 1999px) {
       .tileDetails md-content md-content, .tileDetails md-content md-list-item, .tileDetails md-list-item md-content, .tileDetails md-list-item md-list-item {
         padding: 2px; } }
-    .tileDetails md-content md-content img, .tileDetails md-content md-list-item img, .tileDetails md-list-item md-content img, .tileDetails md-list-item md-list-item img {
-      height: 100%;
-      width: 100%;
-      cursor: pointer; }
+  .tileDetails img {
+    width: 100%;
+    cursor: pointer; }
+  .tileDetails p {
+    font-size: 16px;
+    min-width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .tileDetails .overflowHidden {
+    overflow: scroll;
+    min-height: 100px; }
+  .tileDetails .overflowHidden2 {
+    overflow: auto;
+    height: 67%; }
+    @media only screen and (max-width: 400px) {
+      .tileDetails .overflowHidden2 {
+        margin-top: 20px; } }
+    @media only screen and (min-width: 400px) and (max-width: 670px) {
+      .tileDetails .overflowHidden2 {
+        margin-top: 15px; } }
+    @media only screen and (min-width: 670px) and (max-width: 1024px) {
+      .tileDetails .overflowHidden2 {
+        margin-top: 10px; } }
+    @media only screen and (min-width: 1024px) and (max-width: 1999px) {
+      .tileDetails .overflowHidden2 {
+        margin-top: 0; } }
+    @media only screen and (min-width: 1999px) {
+      .tileDetails .overflowHidden2 {
+        margin-top: 0; } }
+  .tileDetails .shButton {
+    margin: 0 !important;
+    line-height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    width: 60px;
+    height: 40px;
+    /* margin: 5px; */ }
+    @media only screen and (max-width: 400px) {
+      .tileDetails .shButton {
+        width: 30px; } }
+    @media only screen and (min-width: 400px) and (max-width: 670px) {
+      .tileDetails .shButton {
+        width: 60px; } }
+    @media only screen and (min-width: 670px) and (max-width: 1024px) {
+      .tileDetails .shButton {
+        width: 60px; } }
+    @media only screen and (min-width: 1024px) and (max-width: 1999px) {
+      .tileDetails .shButton {
+        width: 60px; } }
+    @media only screen and (min-width: 1999px) {
+      .tileDetails .shButton {
+        width: 60px; } }
+  .tileDetails ul li span {
+    /* width: 70%; */ }
+    @media only screen and (max-width: 400px) {
+      .tileDetails ul li span {
+        width: 60%; } }
+    @media only screen and (min-width: 400px) and (max-width: 670px) {
+      .tileDetails ul li span {
+        width: 70%; } }
+    @media only screen and (min-width: 670px) and (max-width: 1024px) {
+      .tileDetails ul li span {
+        width: 70%; } }
+    @media only screen and (min-width: 1024px) and (max-width: 1999px) {
+      .tileDetails ul li span {
+        width: 70%; } }
+    @media only screen and (min-width: 1999px) {
+      .tileDetails ul li span {
+        width: 70%; } }
 
 /* Home - Allgemein*/
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -2554,37 +2635,9 @@ footer nav {
           .leftInnerHome > section > div > div .pWhen {
             right: 10px; } }
       .leftInnerHome > section > div .sh-icon {
-        position: absolute; }
-        @media only screen and (max-width: 400px) {
-          .leftInnerHome > section > div .sh-icon {
-            top: 5px; } }
-        @media only screen and (min-width: 400px) and (max-width: 670px) {
-          .leftInnerHome > section > div .sh-icon {
-            top: 5px; } }
-        @media only screen and (min-width: 670px) and (max-width: 1024px) {
-          .leftInnerHome > section > div .sh-icon {
-            top: 5px; } }
-        @media only screen and (min-width: 1024px) and (max-width: 1999px) {
-          .leftInnerHome > section > div .sh-icon {
-            top: 5px; } }
-        @media only screen and (min-width: 1999px) {
-          .leftInnerHome > section > div .sh-icon {
-            top: 5px; } }
-        @media only screen and (max-width: 400px) {
-          .leftInnerHome > section > div .sh-icon {
-            right: 5px; } }
-        @media only screen and (min-width: 400px) and (max-width: 670px) {
-          .leftInnerHome > section > div .sh-icon {
-            right: 5px; } }
-        @media only screen and (min-width: 670px) and (max-width: 1024px) {
-          .leftInnerHome > section > div .sh-icon {
-            right: 5px; } }
-        @media only screen and (min-width: 1024px) and (max-width: 1999px) {
-          .leftInnerHome > section > div .sh-icon {
-            right: 5px; } }
-        @media only screen and (min-width: 1999px) {
-          .leftInnerHome > section > div .sh-icon {
-            right: 5px; } }
+        position: absolute;
+        top: 0;
+        right: 0; }
         @media only screen and (max-width: 400px) {
           .leftInnerHome > section > div .sh-icon {
             height: 15px; } }
@@ -2602,48 +2655,48 @@ footer nav {
             height: 15px; } }
         @media only screen and (max-width: 400px) {
           .leftInnerHome > section > div .sh-icon {
-            width: 15px; } }
+            width: 25px; } }
         @media only screen and (min-width: 400px) and (max-width: 670px) {
           .leftInnerHome > section > div .sh-icon {
-            width: 15px; } }
+            width: 25px; } }
         @media only screen and (min-width: 670px) and (max-width: 1024px) {
           .leftInnerHome > section > div .sh-icon {
-            width: 15px; } }
+            width: 25px; } }
         @media only screen and (min-width: 1024px) and (max-width: 1999px) {
           .leftInnerHome > section > div .sh-icon {
-            width: 15px; } }
+            width: 25px; } }
         @media only screen and (min-width: 1999px) {
           .leftInnerHome > section > div .sh-icon {
-            width: 15px; } }
+            width: 25px; } }
         @media only screen and (max-width: 400px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
             height: 15px; } }
         @media only screen and (min-width: 400px) and (max-width: 670px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            height: 22px; } }
+            height: 15px; } }
         @media only screen and (min-width: 670px) and (max-width: 1024px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            height: 24px; } }
+            height: 15px; } }
         @media only screen and (min-width: 1024px) and (max-width: 1999px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            height: 24px; } }
+            height: 15px; } }
         @media only screen and (min-width: 1999px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            height: 24px; } }
+            height: 15px; } }
         @media only screen and (max-width: 400px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            width: 15px; } }
+            width: 25px; } }
         @media only screen and (min-width: 400px) and (max-width: 670px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            width: 22px; } }
+            width: 25px; } }
         @media only screen and (min-width: 670px) and (max-width: 1024px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            width: 24px; } }
+            width: 25px; } }
         @media only screen and (min-width: 1024px) and (max-width: 1999px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            width: 24px; } }
+            width: 25px; } }
         @media only screen and (min-width: 1999px) {
           .leftInnerHome > section > div .sh-icon > md-icon {
-            width: 24px; } }
+            width: 25px; } }
     .leftInnerHome > section > div:last-of-type {
       border-botton: none; }

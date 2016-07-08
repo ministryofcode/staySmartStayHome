@@ -1,19 +1,16 @@
-<form ng-repeat="option in functionality.options">
-    <div ng-show="option.state.person">
-        <p>Es befindet sich jemand im Haus</p>
-    </div>
-    <div ng-show="!option.state.person">
-        <p>Niemand ist im Haus</p>
-    </div>
-
-    Log:
-    <div ng-repeat="logentry in option.state.log">
-
-        {{logentry.value}}
-    </div>
-
-
-
-    <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle>
+<form class="tileDetails tileDetailsSize2" ng-repeat="option in functionality.options">
+    <div class="tileDetails_0 tileDetails_1_5">
+	    <div ng-show="option.state.person">
+			<p>Es befindet sich jemand im Haus</p>
+		</div>
+		<div ng-show="!option.state.person">
+			<p>Niemand ist im Haus</p>
+		</div>
+	</div>
+	<div class="tileDetails_0 tileDetails_1_5-4">
+		<span>Log:</span>
+		<div ng-repeat="logentry in option.state.log">
+			<span>{{logentry.value}}</span>
+		</div>
+	</div>
 </form>
-

@@ -16,9 +16,28 @@ angular.module('app.scenarios', ['ngRoute'])
             this.singleExpand = true;
             this.scenes = sharedData.scenes;
 
+            sharedData.scenes.forEach(function(s){
+                s.iconOptions.noexpand = false;
+                s.iconOptions.nocollapse = false;
+            });
 
-            this.applyScene = function(){
-                var msg =" TODO: IMPLEMENT  - Fuck You Scenario not applyed , haha"
+            this.applyScene = function(scene){
+                var msg = 'Szenarium "' + scene.label + "' nicht angewandt, enthält keine Funktionen.'";
+                if(scene.attachedFunctionalities.length > 0){
+                    scene.attachedFunctionalities.forEach(function(f){
+                        var option = null,memento =null,optionmemento = null;
+                        for(var i= 0; i < f.options.length;i++){
+                            option = f.options[i];
+                            optionmemento = scene.optionMementos.find(function(m){
+                                return m.optionID == option.id;
+                            });
+                            if(optionmemento){
+                                option.restoreFromMemento(optionmemento.memento);
+                                msg = 'Szenarium "' + scene.label + "' angewandt'";
+                            }
+                        }
+                    });
+                }
                 $mdToast.showSimple(msg);
             };
 
@@ -51,24 +70,10 @@ angular.module('app.scenarios', ['ngRoute'])
                 }
             };
 
-            this.expand = function (scene) {
-                var self = this;
-                if (this.singleExpand)
-                    this.scenes.forEach(function (sceneOther) {
-                        if (scene !== sceneOther)
-                            self.collapse(scene)
-                    });
-
-                scene.span.expanded = true;
-
-                if (this.growVal == 'both' || this.growVal == 'row')
-                    scene.span.row = 2;
-                if (this.growVal == 'both' || this.growVal == 'col')
-                    scene.span.col = 2;
-            };
-
-            this.collapse = function (scene) {
-        
+            this.removeFunctionalityFromScene = function(scene,functionality){
+                var i = scene.attachedFunctionalities.indexOf(functionality);
+                if(i >= 0)
+                    scene.attachedFunctionalities.splice(i,1);
             };
 
         }

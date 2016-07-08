@@ -1,11 +1,3 @@
-ResetSharedDatOnNextLoad:
-<button ng-click="localStorageSettings.reset=!localStorageSettings.reset">
-    {{localStorageSettings.reset}}
-</button>
-</button>
-<hr>
-
-
 <div class="leftHome">
     <div class="leftInnerHome">
         <h1>Benachrichtigungen</h1>
@@ -19,7 +11,7 @@ ResetSharedDatOnNextLoad:
                 </div>
 <!--                 <button ng-click="$ctrl.removeMsg(message)"></button> -->
 				<md-button class="sh-icon" layout="row" aria-label="News löschen" ng-click="$ctrl.removeMsg(message)">
-					<md-icon flex md-svg-icon="Delete">
+					<md-icon flex md-svg-icon="delete">
 				</md-button>
             </div>
         </section>
@@ -34,9 +26,8 @@ ResetSharedDatOnNextLoad:
                     <p class="pDetails">{{message.details}}</p>
                     <p class="pWhen">{{message.when}}</p>
                 </div>
-                <!-- <button ng-click="$ctrl.removeNews(message)"></button> -->
 				<md-button class="sh-icon" layout="row" aria-label="News löschen" ng-click="$ctrl.removeNews(message)">
-					<md-icon flex md-svg-icon="Delete">
+					<md-icon flex md-svg-icon="delete">
 				</md-button>
             </div>
         </section>

@@ -80,23 +80,23 @@ angular.module('app.home', ['ngRoute', 'app.details'])
 			}
 		}
 		
-		$interval(function(){setMessage();setNews();}, 120000);
+		$interval(function(){setMessage();setNews();}, 60000);
 		function setMessage() {
 			sharedData.messagesShow=true;
 			sharedData.messagesShowCount++;
-			var imageA = ["CoffeeMaker", "Bathtub", "BabyMonitor", "Door", "TV", "Security", "Energy_1", "WashingMachine", "WashingMachine"];
-			var whatA = ["Kaffeemaschine", "Badewanne", "BabyMonitor", "Tür", "TV", "Sicherheit", "Energie", "Waschmaschine", "Trockner"];		
-			var details0 = ["Reinige mich gerade selbst!", "Bin voll.", "Das Baby lacht!", "Mach mich bitte zu!", "Auf Pro7 kommt dein Lieblingsfilm.", "Die Fenster wurde verriegelt", "Achte bitte mehr auf die Umwelt.", "Drehe mich im Kreis!", "Bin trocken!"];		
-			var details1 = ["Brauche Wasser und Kaffeebohnen!", "Blubber ist an.", "Das Baby lacht!", "Jemand unbekanntes wollte hinein.", "Hab den Wunschilm aufgenommen.", "Die Tür ist verriegelt", "Heute sehr lobenswert!", "Trenne bitte Bunt und Weißes!", "Noch viel zu nass!"];		
-			var details2 = ["Chef. Dein morgendlicher Kaffee steht bereit.", "Bin auf deiner Wunschtemperatur.", "Das Baby schläft ruhig. Alles in Ordnung!", "Keine besonderen Vorkommnisse.", "Hab mich in den StandBy Modus geschalten.", "Keine besonderen Vorkommnisse.", "Alles im 'grünen' Bereich", "Gestartet. Ich wasch für dich!", "Nur noch trocknen. Dann geschafft."];	
+			var imageA = ["CoffeeMaker", "Bathtub", "BabyMonitor", "Door", "TV", "Security", "Energy_1", "WashingMachine", "WashingMachine", "Fridge"];
+			var whatA = ["Kaffeemaschine", "Badewanne", "BabyMonitor", "Tür", "TV", "Sicherheit", "Energie", "Waschmaschine", "Trockner", "Kühlschrank"];		
+			var details0 = ["Reinige mich gerade selbst!", "Bin voll.", "Das Baby lacht!", "Mach mich bitte zu!", "Auf Pro7 kommt dein Lieblingsfilm.", "Die Fenster wurde verriegelt", "Achte bitte mehr auf die Umwelt.", "Drehe mich im Kreis!", "Bin trocken!", "Hab noch deine Pizza von gestern."];		
+			var details1 = ["Brauche Wasser und Kaffeebohnen!", "Blubber ist an.", "Das Baby sieht glücklich aus!", "Jemand unbekanntes wollte hinein.", "Hab den Wunschilm aufgenommen.", "Die Tür ist verriegelt", "Heute sehr lobenswert!", "Trenne bitte Bunt und Weißes!", "Noch viel zu nass!", "Fühle mich leer!"];		
+			var details2 = ["Chef. Dein morgendlicher Kaffee steht bereit.", "Bin auf deiner Wunschtemperatur.", "Das Baby schläft ruhig. Alles in Ordnung!", "Keine besonderen Vorkommnisse.", "Hab mich in den StandBy Modus geschalten.", "Keine besonderen Vorkommnisse.", "Alles im 'grünen' Bereich", "Gestartet. Ich wasch für dich!", "Nur noch trocknen. Dann geschafft.", ""];	
 			
-			var index = Math.floor((Math.random() * 9));
+			var index = Math.floor((Math.random() * 10));
 			var textNumber = Math.floor((Math.random() * 100))%3;
 			var imageText = "img/icons/" + imageA[index] + ".svg";
 			var detailsE = details0;
 			if(textNumber == 1)
 				detailsE = details1;
-			else if(textNumber == 1)
+			else if(textNumber == 2)
 				detailsE = details2;
 			var timestamp = new Date().getTime();
 			
@@ -111,15 +111,18 @@ angular.module('app.home', ['ngRoute', 'app.details'])
 			var details0 = ["Deutschland ist Europameister 2016", "Deutschland 0 Punkte!", "Hof als neue Hauptstadt?", "Wer schafft es in den Bundestag?", "Landgartenschau in Rehau"];	
 			var details1 = ["Public Viewing platz aus allen Nähten", "Überraschung! Letzter...", "Hof zeigt sich Weltoffen!", "Wer wird Bürgermeister?", "Diät! Was hilft?"];	
 			var details2 = ["Ist Fussball out?", "Wie jetzt? Erster?", "Hof als neue Hauptstadt?", "Jetzt wirds ernst!", "In 3 Tagen fit!"];	
+			var details3 = ["Wir sind Schwachweltmeister!", "Ohne Deutschland fahren wir...", "Was nun?", "Klimawandel!?", "Pommes rot weiß oder gelb?"];	
 			
 			var index = Math.floor((Math.random() * 5));
-			var textNumber = Math.floor((Math.random() * 100))%3;
+			var textNumber = Math.floor((Math.random() * 100))%4;
 			var imageText = "img/icons/Information.svg";
 			var detailsE = details0;
 			if(textNumber == 1)
 				detailsE = details1;
-			else if(textNumber == 1)
+			else if(textNumber == 2)
 				detailsE = details2;
+			else if(textNumber == 3)
+				detailsE = details3;
 			var timestamp = new Date().getTime();
 			
 			var objekt = {face:imageText, what: whatA[index], details: detailsE[index], when: "jetzt", 'expanded':'true', timestamp: timestamp};

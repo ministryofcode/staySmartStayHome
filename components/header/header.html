@@ -31,7 +31,7 @@
 			</div>
 			<img src="img/icons/SmartHome.svg">
 		</a>
-
+		<sh-bookmarking-controls class="bookmarksShow"></sh-bookmarking-controls>
 		<div class="breadcrumbs">
 			<div ng-repeat="breadcrumb in $ctrl.breadcrumbs.getAll()">
 				<a ng-href="#{{breadcrumb.path}}">{{breadcrumb.label}}</a>
@@ -45,9 +45,7 @@
 		</a>
 	</div>
 
-	<sh-bookmarking-controls>
 
-	</sh-bookmarking-controls>
 </div>
 
 <div id="headerProfil" class="animateProfil">

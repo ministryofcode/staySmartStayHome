@@ -1,0 +1,27 @@
+
+<div layout="row" class="globalBookmark"  ng-show="$ctrl.bookmarking.running">
+	 <div class="lock-size" layout="row" layout-align="center center">
+		<md-fab-speed-dial md-open="$ctrl.isOpen" md-direction="right" ng-class="$ctrl.selectedMode">
+			<md-fab-trigger>
+				<md-button id="bookmarkDivVerschieben"  aria-label="menu" class="md-fab md-warn">
+					<md-icon md-svg-src="information"></md-icon>
+					 <md-tooltip md-direction="right">
+						Zwischen  Räumen wechseln und über Bookmark (oben links) Funktionen dem Szenario hinzufügen.
+						Szenarienmodus wird erst nach 'Übernahme' oder 'Verwerfen' verlassen.
+					</md-tooltip>
+				</md-button>
+			</md-fab-trigger>
+			<md-fab-actions>
+				<md-button ng-click='$ctrl.bookmarking.stop()' aria-label="Auswahl verwerfen" class="md-fab md-raised md-mini">
+					<md-icon md-svg-src="delete" aria-label="Auswahl verwerfen"></md-icon>
+					<md-tooltip>Szenarioauswahl verwerfen</md-tooltip>
+				</md-button>
+				<md-button ng-click='$ctrl.bookmarking.save()' aria-label="Auswahl übernehmen" class="md-fab md-raised md-mini">
+					<md-icon md-svg-src="confirm" aria-label="Auswahl übernehmen"></md-icon>
+					<md-tooltip>Szenarioauswahl übernehmen</md-tooltip>
+				</md-button>
+			</md-fab-actions>
+		</md-fab-speed-dial>
+     </div>
+</div>
+

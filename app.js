@@ -12,7 +12,8 @@ angular.module('app', [
     'app.settings',
     'app.navigation',
     'app.header',
-    'ngMaterial'
+    'ngMaterial', 
+    'chart.js'
 ])
 
     .config(['$routeProvider', function ($routeProvider) {

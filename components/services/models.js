@@ -141,7 +141,7 @@ angular.module('app').factory('models', [function () {
             isactiv: 0
         },
         beamerProgramm: [
-            {value: 'Der Herr der Ringe'},
+            {value: 'Spaceballs'},
             {value: 'Star Wars'},
             {value: 'Ice Age'},
             {value: 'Titanic'},
@@ -214,13 +214,12 @@ angular.module('app').factory('models', [function () {
                 {value: 'abc.mp4', name: 'Ice Ice Baby - Vanilla Ice', img: 'img/vanillaice.jpg', duration: 120},
                 {value: 'abc.mp4', name: 'Rhythm Is A Dancer - Snap', img: 'img/snap.jpg', duration: 200},
                 {value: 'abc.mp4', name: 'Barbie Girl - Aqua', img: 'img/barbie.jpg', duration: 150},
-                {value: 'abc.mp4', name: 'Bailando - Loona', img: 'img/loona.jpg', duration: 300},
-
+                {value: 'abc.mp4', name: 'Bailando - Loona', img: 'img/loona.jpg', duration: 300}
             ]
         },
         tubOptions: {
             blubberon: false,
-            temperature: 30,
+            temperature: 30
         },
         waterconsumptionOption: {
             today: 130,
@@ -364,17 +363,16 @@ angular.module('app').factory('models', [function () {
         this.options = [];
         this.bookmarksAllowed = true;
         this.expDisallowed = false;
+        this.isBookmarked = false;
         this.span = angular.copy(FuncDefaultSpans[type] || FuncDefaultSpans['unknown']);
         angular.merge(this, options);
     }
 
     function Option(type, additionaldata) {
-
         this.instanceType = type;
         this.id = modelID++;
         this.state = angular.copy(OptionStates[type]);
         this.inputmodi = angular.copy(OptionInputModi[type]); //Steuerelemente
-
         angular.merge(this, additionaldata);
     }
 
@@ -382,16 +380,15 @@ angular.module('app').factory('models', [function () {
         this.type = type;
         this.label = null;
         this.id = modelID++;
-        this.optionCollection = [];
         this.optionMementos = [];
-
+        this.attachedFunctionalities =[];
         this.tileMainIconTmpl = '/components/scenarios/tilemainicontmpl.html';
         this.isFavorite = false;
         this.isExpanded = false;
         this.id = modelID++;
-        this.bookmarksAllowed = true;
+        this.bookmarksAllowed = false;
         this.span = {row:2, col: 2};
-
+        this.iconOptions = {nobookmark : true};
         angular.merge(this, additionaldata);
     }
 

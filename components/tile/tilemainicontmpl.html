@@ -182,7 +182,7 @@
 <!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
         {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
     </md-switch> -->
-    <span ng-show="tile.options[0].state.on">{{tile.options[1].state[tile.options[0].state.isactiv].value}}</span>
+    <span class="beamerSpan" ng-show="tile.options[0].state.on">{{tile.options[1].state[tile.options[0].state.isactiv].value}}</span>
     <span ng-show="!tile.options[0].state.on">aus</span>
 	
 </div>

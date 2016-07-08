@@ -1,55 +1,55 @@
 <div class="sh-wrapper">
-	<md-button class="sh-icon sh-bookmark"
-			   aria-label="{{altBookmarkText}}"
-			   ng-hide="iconOptions.nobookmark || !bookmarking.running"
-		ng-click="doFunctionalityBookmark()">
+    <md-button class="sh-icon sh-bookmark"
+               aria-label="{{altBookmarkText}}"
+               ng-hide="iconOptions.nobookmark || !bookmarking.running"
+               ng-click="$tileCtrl.toogleFuncBookmark(tile)">
 
-		<md-tooltip md-direction="top">{{altBookmarkText}}</md-tooltip>
-		<md-icon md-svg-icon="bookmark"></md-icon>
+        <md-tooltip md-direction="top">{{altBookmarkText}}</md-tooltip>
+        <md-icon md-svg-icon="{{tile.isBookmarked ?  'bookmarked' : 'bookmark'}}"></md-icon>
 
-	</md-button>
+    </md-button>
 
-	<md-button class="sh-icon sh-collapse"
-			   aria-label="{{altCollapseText}}"
-			   ng-hide="iconOptions.nocollapse || !tile.isExpanded"
-			   ng-click="tile.isExpanded=false">
+    <md-button class="sh-icon sh-collapse"
+               aria-label="{{altCollapseText}}"
+               ng-hide="iconOptions.nocollapse || !tile.isExpanded"
+               ng-click="tile.isExpanded=false">
 
-		<md-tooltip md-direction="top">{{altCollapseText}}</md-tooltip>
-		<md-icon md-svg-icon="collapse"></md-icon>
+        <md-tooltip md-direction="top">{{altCollapseText}}</md-tooltip>
+        <md-icon md-svg-icon="collapse"></md-icon>
 
-	</md-button>
-	<!--ng-disabled="tile.expDisallowed"-->
-	<md-button class="sh-icon sh-expand"
-			   aria-label="{{altExpandText}}"
-			   ng-hide="tile.expDisallowed || tile.isExpanded || iconOptions.noexpand"
-			   ng-click="tile.isExpanded=!tile.expDisallowed &&  true">
+    </md-button>
+    <!--ng-disabled="tile.expDisallowed"-->
+    <md-button class="sh-icon sh-expand"
+               aria-label="{{altExpandText}}"
+               ng-hide="tile.expDisallowed || tile.isExpanded || iconOptions.noexpand"
+               ng-click="tile.isExpanded=!tile.expDisallowed &&  true">
 
-		<md-tooltip md-direction="top">{{altExpandText}}</md-tooltip>
-		<md-icon md-svg-icon="expand"></md-icon>
+        <md-tooltip md-direction="top">{{altExpandText}}</md-tooltip>
+        <md-icon md-svg-icon="expand"></md-icon>
 
-	</md-button>
+    </md-button>
 
-	<md-button class="sh-icon sh-watchinroom"
-			   aria-label="{{altWatchinroomText}}"
-			   ng-show="iconOptions.watchinroom && !tile.nogotoicon"
-			   ng-click="watchinroom()">
+    <md-button class="sh-icon sh-watchinroom"
+               aria-label="{{altWatchinroomText}}"
+               ng-show="iconOptions.watchinroom && !tile.nogotoicon"
+               ng-click="watchinroom()">
 
-		<md-tooltip md-direction="top">{{altWatchinroomText}}</md-tooltip>
-		<md-icon md-svg-icon="forward"></md-icon>
+        <md-tooltip md-direction="top">{{altWatchinroomText}}</md-tooltip>
+        <md-icon md-svg-icon="forward"></md-icon>
 
-	</md-button>
+    </md-button>
 
-	<md-button class="sh-icon sh-favorite"
-			   aria-label="{{altFavoriteText}}"
-			   ng-hide="iconOptions.nofavorite || bookmarking.running"
-			   ng-class="{'sh-active':tile.isFavorite}"
-			   ng-click="tile.isFavorite=!tile.isFavorite">
+    <md-button class="sh-icon sh-favorite"
+               aria-label="{{altFavoriteText}}"
+               ng-hide="iconOptions.nofavorite || bookmarking.running"
+               ng-class="{'sh-active':tile.isFavorite}"
+               ng-click="tile.isFavorite=!tile.isFavorite">
 
-		<md-tooltip md-direction="top">{{altFavoriteText}}</md-tooltip>
-		<md-icon md-svg-icon="{{tile.isFavorite?'starred':'star'}}"></md-icon>
+        <md-tooltip md-direction="top">{{altFavoriteText}}</md-tooltip>
+        <md-icon md-svg-icon="{{tile.isFavorite?'starred':'star'}}"></md-icon>
 
-	</md-button>
-	<span>{{tile.label}}</span>
-    <div class="mainContentTile" ng-include='tile.tileMainIconTmpl' ></div>
+    </md-button>
+    <span>{{tile.label}}</span>
+    <div class="mainContentTile" ng-include='tile.tileMainIconTmpl'></div>
 </div>
 <ng-transclude ng-show="tile.isExpanded" class="gridExpert"></ng-transclude>

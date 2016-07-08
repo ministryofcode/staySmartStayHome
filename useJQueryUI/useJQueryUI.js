@@ -7,10 +7,42 @@ var start = true;
 var longpress = 400;
 var start;
 jQuery(document).ready(function ($) {
+	
+				
+	$("#bookmarkDivVerschieben").mousedown(function(){
+        mskeydown = true;
+ 
+        var element = $("#scroller")[0];
+        old_xpos = element.style.left;
+        old_ypos = element.style.top;
+    });
+ 
+    $("#bookmarkDivVerschieben").mouseup(function(){
+        mskeydown = false;
+    });
+ 
+    $("#bookmarkDivVerschieben").mousemove(function(e){
+        if (mskeydown)
+        {
+            var element = $("#bookmarkDivVerschieben");
+            element.style.left = (e.pageX - old_xpos) + 'px';
+            element.style.top  = (e.pageY - old_ypos) + 'px';
+ 
+            old_xpos = element.style.left;
+            old_ypos = element.style.top;
+        }
+    });
+				
+				
     /* Toogle für verstecktes Menü - Klick auf Menüpunkt Mehr */
     /* ---------------------------------------------------------------------------------------------------------- */
 	$(document).click(function (evt) {
-			
+		
+		if(evt.target.baseURI.includes("security") || evt.target.baseURI.includes("weather") || evt.target.baseURI.includes("settings") || evt.target.baseURI.includes("energy"))
+			$("#sh-nav-menu-more").css("background", "#FF7D25");
+		else
+			$("#sh-nav-menu-more").css("background", "none");
+		
 		if(evt.target.id == "clickProfilLink" || evt.target.parentNode.id == "clickProfilLink"){
 			
 			if ($("#headerSecond").css("position") == "fixed")
@@ -26,6 +58,7 @@ jQuery(document).ready(function ($) {
 		
 		if (evt.target.id == "sh-nav-menu-more" || evt.target.parentNode.id == "sh-nav-menu-more"){
             // cancel handler while animation running, or use .stop() to cancel running animations
+			
             if ($("#sh-nav-menu-overflow:animated").length)
                 return false;
             $("#sh-nav-menu-overflow").toggle("slide", {direction: 'down', easing: 'easeOutBounce'}, 1000);

@@ -1,8 +1,5 @@
-<form ng-repeat="option in functionality.options">
-
-    <img ng-show="option.state.on" ng-src="{{option.state.source}}" alt="Überwachungskamera" />
-    <span ng-show="!option.state.on">Kamera ausgeschaltet</span>
-
-    <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle>
+<form class="tileDetails tileDetailsSize4" ng-repeat="option in functionality.options">
+    <div class="tileDetails_0 tileDetails_1_1">
+        <img ng-show="option.state.on" ng-src="{{option.state.source}}" alt="Überwachungskamera" />
+    </div>
 </form>
-

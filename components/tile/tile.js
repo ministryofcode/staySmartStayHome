@@ -99,12 +99,12 @@ angular.module('app.tile', [])
                             return cssClass;
                         if(!coffeem.options[0].state.empty)
                         {
-                            debugger;
+                            // debugger;
                             cssClass = 'coffeefull';
                         }
                         else 
                         {
-                            debugger;
+                            // debugger;
                             cssClass = 'coffeeempty';
                         }
                         
@@ -222,8 +222,12 @@ angular.module('app.tile', [])
                         return cssClass;
                     }
 
-                    this.doFunctionalityBookmark  = function (functionality) {
-                        debugger;
+                    this.toogleFuncBookmark  = function (functionality) {
+                        if(!functionality.isBookmarked)
+                            bookmarking.attachFunctionality(functionality);
+                        else
+                            bookmarking.detachFunctionality(functionality);
+                        functionality.isBookmarked = !functionality.isBookmarked;
                     }
                 }]
 
