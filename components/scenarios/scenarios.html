@@ -1,0 +1,60 @@
+<style>
+    /*.abscontainer {*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*}*/
+
+    /*.scenarios svg * {*/
+    /*fill: blue;*/
+    /*}*/
+</style>
+<div class="wholeGridClass scenarios" ng-controller="GridController as gc">
+    <div class="gridSystemClass gridwrapper">
+        <div class="gridcontent" id="grid-666666-0">
+            <div class="realGridContent">
+                <div class="sh-wrapper">
+                    <div class="mainContentTile">
+                        <div>
+                            <md-button class='md-primary sh-icon' ng-click="$ctrl.createScene()">
+                                <md-icon md-svg-icon="add"></md-icon>
+                                <md-tooltip direction="top">Szenario Erstellen</md-tooltip>
+                            </md-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gridcontent" ng-repeat="scene in $ctrl.scenes"
+             ng-attr-id="{{ 'grid-' + scene.id +'-' + ($index +1)}}">
+
+            <div class="realGridContent" >
+                <sh-tile tile-data="scene" on-expand-change="gc.toogleGridTile($index+1,scene)"
+                         single-expand="$ctrl.scenes" inj-ctrl="$ctrl">
+
+                    <md-button ng-click="$ctrl.removeScene(scene)">
+                        <md-icon md-svg-icon="delete"></md-icon>
+                    </md-button>
+
+                    <md-button ng-click="$ctrl.startBookmark(scene)">
+                        <md-icon md-svg-icon="edit"></md-icon>
+                    </md-button>
+
+                    <md-input-container>
+                        <label>Bezeichnung</label>
+                        <input ng-model="scene.label" type="text">
+                    </md-input-container>
+
+                    <md-list>
+                        <md-list-item ng-repeat="option in scene.optionCollection">
+
+                        </md-list-item>
+                    </md-list>
+                </sh-tile>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

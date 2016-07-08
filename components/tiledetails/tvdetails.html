@@ -1,0 +1,16 @@
+<form class="tileDetails tileDetailsSize1" ng-repeat="option in functionality.options" ng-if="option.instanceType == 'tvProgramm'">
+	<div class="tileDetails_0 tileDetails_1_4">
+		<span>Fernsehprogramm wählen: </span> 
+<!-- 		<md-input-container class="md-block mdSearchTV" flex-gt-sm>
+            <label>Suche</label>
+            <input>
+        </md-input-container> -->
+	</div>
+    <div class="tileDetails_0 tileDetails_1_4-3">
+		<div class="buttonTVOverflow" ng-model="functionality.options[0].state.isactiv">	
+			<button ng-repeat="se in option.state" ng-click="functionality.options[0].state.isactiv = $index; functionality.options[0].state.on = true">
+				{{se.value}}
+			</button>	
+		</div>	
+    </div>
+</form>

@@ -1,0 +1,130 @@
+<div layout-md="column">
+    <div layout="column" layout-gt-sm="row" flex class="here">
+
+        <style>
+            /*.dev2 md-list-item {*/
+            /*border: thin solid lightcoral;*/
+            /*}*/
+
+            /*.dev1, .dev2 {*/
+            /*border: thin solid blue;*/
+            /*}*/
+
+            /*.here svg * {*/
+            /*fill: black;*/
+            /*}*/
+
+            /*.dev1 > div, .dev2 > div {*/
+            /*margin: 5px;*/
+            /*padding: 5px;*/
+            /*border: thin solid blue;*/
+            /*}*/
+
+            /*.selected {*/
+            /*background-color: lightcyan;*/
+            /*}*/
+
+            /*#aijedoije {*/
+            /*overflow: auto;*/
+            /*height: 95%;*/
+            /*width: 95%;*/
+            /*}*/
+
+        </style>
+        <div layout="column">
+            <md-toolbar layout="row">
+                <md-button
+                        ng-disabled="!$ctrl.selectedRule"
+                        ng-click="$ctrl.deleteRule($ctrl.selectedRule)"
+                        aria-label="Ausgewählte Regel Löschen">
+                    <md-tooltip md-direction="top">Ausgewählte Regel Löschen</md-tooltip>
+                    <md-icon md-svg-icon="delete"></md-icon>
+                </md-button>
+                <md-button ng-click="$ctrl.createRule()" aria-label="Neue Regel definieren">
+                    <md-tooltip md-direction="top">Neue Regel definieren</md-tooltip>
+                    <md-icon md-svg-icon="add"></md-icon>
+                </md-button>
+            </md-toolbar>
+            <div layout="row" layout-gt-sm="column" id="aijedoije">
+
+                <div ng-repeat="rule in $ctrl.rules" ng-click="$ctrl.setSelected(rule)">
+
+                    <sh-rule rule="rule" on-delete="$ctrl.deleteRule(rule)"
+                             layout="column" single-select="$ctrl.rules"
+                             ng-class="{'selected' : !!rule.selected}">
+                    </sh-rule>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--<div layout="column" flex class='dev2' ng-disabled="!$ctrl.selectedRule" ng-hide="!$ctrl.selectedRule">-->
+        <md-tabs flex ng-show="!!$ctrl.selectedRule">
+            <md-tab label="{{$ctrl.selectedRule.label}} - Bedingung">
+                <!--<md-toolbar layout="row" layout-align="start center">-->
+
+                <!--<md-button ng-click="$ctrl.showRuleContent='condition'">-->
+                <!--Bedingungen-->
+                <!--</md-button>-->
+                <!--<md-button ng-click="$ctrl.showRuleContent='action' ">-->
+                <!--Aktionen-->
+                <!--</md-button>-->
+                <!--<span flex></span>-->
+                <!--<h1>{{$ctrl.selectedRule.label}}</h1>-->
+                <!--</md-toolbar>-->
+
+                <div layout="column" ng-show="$ctrl.showRuleContent=='condition' || !$ctrl.showRuleContent">
+                    <md-subheader layout="row" layout-align="start center">
+                        <md-button class="md-primary" ng-click="$ctrl.addNewCondidionToSelectedRule()">
+                            Neu Bedingung anlegen
+                        </md-button>
+                        <md-button class="md-primary" ng-click='$ctrl.showConditionConnectDialog()'>
+                            Bestehende Bedingung Verknüpfen
+                        </md-button>
+                        <span flex></span>
+                    </md-subheader>
+
+                    <!--<sh-condition-edit condition="$ctrl.editCond" rule="$ctrl.selectedRule" flex>-->
+
+                    <!--</sh-condition-edit>-->
+
+                    <!--<md-button ng-click="$ctrl.adEditConditionToRule()">-->
+                    <!--<md-tooltip md-direction="top">-->
+                    <!--Die eingestellte Bedingung, in die ausgewählten Regel aufnehmen-->
+                    <!--</md-tooltip>-->
+                    <!--<md-icon md-svg-icon="add"></md-icon>-->
+                    <!--</md-button>-->
+
+
+                    <md-divider></md-divider>
+
+                    <md-list>
+                        <md-list-item ng-repeat="condition in $ctrl.selectedRule.conditionCollection">
+                            <md-icon md-svg-icon="condition"></md-icon>
+                            <sh-condition condition="condition"></sh-condition>
+                            <span flex></span>
+                            <div layout="row">
+                                <md-button ng-click="$ctrl.removeConditionFromSelectedRule(condition)">
+                                    <md-icon md-svg-icon="delete"></md-icon>
+                                    <md-tooltip direction="top">Bedingung Löschen</md-tooltip>
+                                </md-button>
+                                <md-button>
+                                    <md-icon md-svg-icon="edit"
+                                             ng-click="$ctrl.startContitionEdit(condition)"></md-icon>
+                                    <md-tooltip direction="top">Bedingung edititieren</md-tooltip>
+                                </md-button>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+
+                </div>
+            </md-tab>
+            <md-tab label="{{$ctrl.selectedRule.label}} - Aktion">
+                <!--<div ng-show="$ctrl.showRuleContent=='action'">-->
+                <!--</div>-->
+            </md-tab>
+        </md-tabs>
+        <!--</div>-->
+    </div>
+</div>

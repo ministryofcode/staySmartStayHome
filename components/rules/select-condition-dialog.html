@@ -1,0 +1,39 @@
+<style>
+    .connect-dialog-content {
+        padding: 25px 10px 25px 10px;
+    }
+</style>
+
+<md-dialog aria-label="Bestehende Bedingung verknüpfen" ng-cloak>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Bestehende Bedingung verknüpfen</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+                    <md-icon md-svg-src="delete" aria-label="Dialog schließen"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content class="connect-dialog-content">
+            <ul>
+                <li ng-repeat="condition in $ctrl.conditions" layout="row" layout-align="start center">
+                    <p>{{condition.label}}</p>
+                    <!--<sh-condition condition="condition"></sh-condition>-->
+                    <span flex></span>
+                    <md-button ng-click="$ctrl.returnSelection(condition)">
+                        Auswählen
+                    </md-button>
+                </li>
+            </ul>
+            <p ng-show=" !$ctrl.conditions || $ctrl.conditions.length < 1">Bisher wurden noch keine Bedingungen
+                angelegt</p>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="$ctrl.cancel()">
+                Abbrechen
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

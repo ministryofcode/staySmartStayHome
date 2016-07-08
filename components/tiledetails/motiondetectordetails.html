@@ -1,0 +1,19 @@
+<form ng-repeat="option in functionality.options">
+    <div ng-show="option.state.person">
+        <p>Es befindet sich jemand im Haus</p>
+    </div>
+    <div ng-show="!option.state.person">
+        <p>Niemand ist im Haus</p>
+    </div>
+
+    Log:
+    <div ng-repeat="logentry in option.state.log">
+
+        {{logentry.value}}
+    </div>
+
+
+
+    <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle>
+</form>
+

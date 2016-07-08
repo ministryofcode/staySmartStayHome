@@ -1,0 +1,13 @@
+<form class="tileDetails tileDetailsSize1" ng-repeat="option in functionality.options" >
+
+    <div class="tileDetails_0 tileDetails_1_2">
+		<span class="lightDetailsSpanCenter"> Feinabstimmung: </span> 
+        <md-input-container class="sliderInputBox">
+			<input flex="" type="number" ng-model="option.state.value" aria-label="rollo" aria-controls="rollo-slider">
+		</md-input-container>
+	</div>
+    <div class="tileDetails_0 tileDetails_1_2">
+		<md-slider ng-model="option.state.value" min="0" max="35" aria-label="heating" class="md-primary" md-vertical="" id="blue-slider" ></md-slider>	
+    </div>
+    <!-- <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle> -->
+</form>

@@ -1,0 +1,80 @@
+ResetSharedDatOnNextLoad:
+<button ng-click="localStorageSettings.reset=!localStorageSettings.reset">
+    {{localStorageSettings.reset}}
+</button>
+</button>
+<hr>
+
+
+<div class="leftHome">
+    <div class="leftInnerHome">
+        <h1>Benachrichtigungen</h1>
+        <section>
+            <div ng-repeat="message in messages track by $index">
+                <img ng-src="{{message.face}}" alt="{{message.who}}">
+                <div class="md-list-item-text" ng-show="message.expanded">
+                    <h2>{{message.what}}</h2>
+                    <p class="pDetails">{{message.details}}</p>
+                    <p class="pWhen">{{message.when}}</p>
+                </div>
+<!--                 <button ng-click="$ctrl.removeMsg(message)"></button> -->
+				<md-button class="sh-icon" layout="row" aria-label="News löschen" ng-click="$ctrl.removeMsg(message)">
+					<md-icon flex md-svg-icon="Delete">
+				</md-button>
+            </div>
+        </section>
+    </div>
+    <div class="leftInnerHome">
+        <h1>Top-News</h1>
+        <section>
+            <div ng-repeat="message in news track by $index">
+                <img ng-src="{{message.face}}" alt="{{message.who}}">
+                <div class="md-list-item-text" ng-show="message.expanded">
+                    <h2>{{message.what}}</h2>
+                    <p class="pDetails">{{message.details}}</p>
+                    <p class="pWhen">{{message.when}}</p>
+                </div>
+                <!-- <button ng-click="$ctrl.removeNews(message)"></button> -->
+				<md-button class="sh-icon" layout="row" aria-label="News löschen" ng-click="$ctrl.removeNews(message)">
+					<md-icon flex md-svg-icon="Delete">
+				</md-button>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="middleHome">
+    <div class="middleHomeBorder">
+    </div>
+</div>
+<div class="rightHome">
+	<div>
+		<span>Favoriten in den Räumen über den Stern hinzufügen</span>
+	</div>
+    <md-grid-list md-cols="3" md-cols-xs="2" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+                  md-row-height-gt-md="1:1" md-row-height="1:1"
+                  md-gutter="12px" md-gutter-gt-sm="8px">
+
+        <md-grid-tile ng-repeat="functionality in $ctrl.favorites" ng-show="functionality.isFavorite">
+			<div id="wrapperFavoriteHome">
+				<span>{{functionality.room.label}}</span>
+				<sh-tile tile-data="functionality"
+                     single-expand="favorites"
+                     icon-options="{noexpand:true,nobookmark:true,nocollapse:true,watchinroom:true}"
+                     on-favorite-change="$ctrl.updateFavorites()"></sh-tile>
+			</div>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

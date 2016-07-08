@@ -1,0 +1,51 @@
+<div class="wholeGridClass" ng-controller="GridController as gc">
+	<div class="gridcontainerClass">
+		<div class="gridSystemClass gridwrapper">
+
+			<div class="gridcontent" ng-show="$first" ng-repeat="w in weather.dayData">
+				<div class="container">
+					<div class="realGridContent">
+						<div class="sh-wrapper">
+							<div class="mainContentTileWeather">
+								<div class="sh-icon">
+									<md-icon md-svg-icon="{{w.iconName}}"></md-icon>
+								</div>
+								<div>
+									<span>Max °: {{w.highesttemperature}}</span>
+									<span>Min °: {{w.lowesttemperature}}</span>
+									<span>Luftfeuchtigkeit: {{w.humidity}} %</span>
+									<span>Windstärke: {{w.windspeed}}km/h</span>
+									<span>Akteull: {{w.actualtemperature}} °</span>
+								</div>
+							</div>
+							<span>{{w.day}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="gridcontent" ng-hide="$first" ng-repeat="w in weather.dayData">
+				<div class="container">
+					<div class="realGridContent">
+						<div class="sh-wrapper">
+							<div class="mainContentTileWeather">
+								<div class="sh-icon">
+									<md-icon md-svg-icon="{{w.iconName}}"></md-icon>
+								</div>
+								<div>
+									<span>Max °: {{w.highesttemperature}}</span>
+									<span>Min °: {{w.lowesttemperature}}</span>
+									<span>Luftfeuchtigkeit: {{w.humidity}} %</span>
+									<span>Windstärke: {{w.windspeed}}km/h</span>
+									<span>Aktuell: {{w.actualtemperature}} °</span>
+								</div>
+							</div>
+							<span>{{w.day}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

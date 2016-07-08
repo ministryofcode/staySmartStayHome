@@ -1,0 +1,62 @@
+
+
+<div id="headerFirst">
+	<div class="headerClock">
+		<span>{{time}}</span> 
+		<span>{{date}}</span>
+	</div>
+	<div class="headerTitel">
+		<a href="#/home" >
+			<div class="getNewInfo" ng-show="infoShow">
+				<div>{{info}}</div>
+			</div>
+			<img src="img/icons/SmartHome.svg">
+			<span>Stay Smart. Stay Home.</span>
+		</a>
+	</div>
+	<div class="headerWeather">
+		<div>
+			<span>{{actualweather.actualtemperature}}</span>
+			<span>Hof</span>
+		</div>
+        <sh-icon name="{{actualweather.iconName}}"></sh-icon>
+	</div>
+</div>
+
+<div id="headerSecond">
+	<div>
+		<a class="animateLink" href="#/home" >
+			<div class="getNewInfo" ng-show="infoShow">
+				<div>{{info}}</div>
+			</div>
+			<img src="img/icons/SmartHome.svg">
+		</a>
+
+		<div class="breadcrumbs">
+			<div ng-repeat="breadcrumb in $ctrl.breadcrumbs.getAll()">
+				<a ng-href="#{{breadcrumb.path}}">{{breadcrumb.label}}</a>
+			</div>		
+		</div>
+		<div class="mainName">
+			<span>{{$ctrl.activeProfile.name}}</span>
+		</div>
+		<a id="clickProfilLink" class="profilLink">
+			<img ng-src="{{$ctrl.activeProfile.image}}" alt="Profilbild des aktiven Benutzer">
+		</a>
+	</div>
+
+	<sh-bookmarking-controls>
+
+	</sh-bookmarking-controls>
+</div>
+
+<div id="headerProfil" class="animateProfil">
+    <ul id="headerProfilUl">
+        <li ng-repeat="user in $ctrl.users">
+            <a>
+                <span>{{user.name}}</span>
+                <img ng-src="{{user.image}}" alt="Profilbild Benutzer" ng-click="$ctrl.setActiveProfile(user)">
+            </a>
+        </li>
+    </ul>
+</div>

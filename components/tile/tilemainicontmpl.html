@@ -1,0 +1,580 @@
+<div ng-if="tile.instanceType == 'light'">
+    <style type = "text/css">
+        #detail-light-{{tile.id}} svg *{
+           fill: {{tile.options[0].state.color}};
+           stroke : rgba(0,0,0,.5);
+        }
+    </style>
+
+    <md-button class="sh-icon" ng-attr-id="detail-light-{{tile.id}}" layout="row" aria-label="Beleuchtung an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'bulb_with_light' : 'bulb_no_light' }}">
+    </md-button>
+	<span> {{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'heating'">
+    <style type = "text/css">
+		#detail-heating-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+		}
+        .perc0_0 .heating1 {
+                     fill : #CFCFCF;
+                 }
+        .perc0_0 .heating2 {
+            fill : #CFCFCF;
+        }
+        .perc0_0 .heating3 {
+            fill : #CFCFCF;
+        }
+        .perc0_0 .heating4 {
+            fill : #CFCFCF;
+        }
+        .perc0_0 .heating5 {
+            fill : #CFCFCF;
+        }
+		.perc10_17 .heating1 {
+			fill : #87CEFA;
+		}
+		.perc10_17 .heating2 {
+			fill : #CFCFCF;
+		}
+		.perc10_17 .heating3 {
+			fill: #CFCFCF;
+		}
+		.perc10_17 .heating4 {
+			fill: #CFCFCF;
+		}
+		.perc10_17 .heating5 {
+			fill: #CFCFCF;
+		}
+		.perc117_34 .heating1 {
+			fill : #32CD32;
+		}
+		.perc117_34 .heating2 {
+			fill: #32CD32;
+		}
+		.perc117_34 .heating3 {
+			fill: #CFCFCF;
+		}
+		.perc117_34 .heating4 {
+			fill: #CFCFCF;
+		}
+		.perc117_34 .heating5 {
+			fill: #CFCFCF;
+		}
+		.perc234_50 .heating1 {
+			fill : #FFFF00;
+		}
+		.perc234_50 .heating2 {
+			fill: #FFFF00;
+		}
+		.perc234_50 .heating3 {
+			fill : #FFFF00;
+		}
+		.perc234_50 .heating4 {
+			fill : #CFCFCF;
+		}
+		.perc234_50 .heating5 {
+			fill : #CFCFCF;
+		}
+		.perc350_64 .heating1{
+			fill : #FFA500;
+		}
+		.perc350_64 .heating2{
+			fill: #FFA500;
+		}
+		.perc350_64 .heating3{
+			fill : #FFA500;
+		}
+		.perc350_64 .heating4{
+			fill : #FFA500;
+		}
+		.perc350_64 .heating5{
+			fill : #CFCFCF;
+		}
+		.perc464_83 .heating1{
+			fill : #FF4500;
+		}
+		.perc464_83 .heating2{
+			fill: #FF4500;
+		}
+		.perc464_83 .heating3{
+			fill : #FF4500;
+		}
+		.perc464_83 .heating4{
+			fill : #FF4500;
+		}
+		.perc464_83 .heating5{
+			fill : #FF4500;
+		}
+		.perc83_100 .heating1 .heating2 .heating3 .heating4 .heating5{
+			fill : #FF4500;
+		}
+        </style>
+	<md-button class="sh-icon" ng-attr-id="detail-heating-{{tile.id}}" layout="row"  aria-label="Temperatur hoch/runter" ng-click="$tileCtrl.temperatureClick(tile)" >
+		<md-icon flex md-svg-icon="heating" aria-label="Heizung" ng-class="$tileCtrl.getHeating(tile)">
+		</md-icon>
+	</md-button>
+	<span>{{tile.options[0].state.value}}&#8451;</span>
+</div>
+
+<div ng-if="tile.instanceType == 'screen'">
+    <style type = "text/css">
+        #detail-screen-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-screen-{{tile.id}}" layout="row"  aria-label="Leinwand oben/unten" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'screen_collapsed' : 'screen' }}">
+        </md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.on ? 'oben' : 'unten' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'sprinkler'">
+    <style type = "text/css">
+        #detail-sprinkler-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button ng-click="tile.options[0].state.on = !tile.options[0].state.on" class="sh-icon" ng-attr-id="detail-sprinkler-{{tile.id}}" layout="row" class="" aria-label="Bewässerungsanlage an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'watering_on' : 'watering' }}">
+        </md-icon>
+    </md-button>
+
+<!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
+        {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
+    </md-switch> -->
+	<span>{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'oven'" >
+    <style type = "text/css">
+        #detail-oven-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-oven-{{tile.id}}" layout="row" class="" aria-label="Backofen an/aus"  ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'stove_on' : 'stove' }}">
+        </md-icon>
+    </md-button>
+<!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
+        {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
+    </md-switch> -->
+	<span>{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'beamer'">
+    <style type = "text/css">
+        #detail-beamer-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-beamer-{{tile.id}}" layout="row" class="" aria-label="Beamer an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon  flex md-svg-icon="{{tile.options[0].state.on ? 'beamer_on' : 'beamer' }}">
+        </md-icon>
+    </md-button>
+<!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
+        {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
+    </md-switch> -->
+    <span ng-show="tile.options[0].state.on">{{tile.options[1].state[tile.options[0].state.isactiv].value}}</span>
+    <span ng-show="!tile.options[0].state.on">aus</span>
+	
+</div>
+
+<div ng-if="tile.instanceType == 'coffeemachine'">
+    <style type = "text/css">
+        #detail-coffee-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+        .coffeeempty .st2coffee {
+            fill : #285EB4;
+        }
+        .coffeefull .st2coffee {
+            fill : #8B5A2B;
+        }
+
+
+
+
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-coffee-{{tile.id}}" layout="row" class="" aria-label="Kaffeemaschine an/aus" ng-click="tile.options[0].state.empty = !tile.options[0].state.empty">
+        <md-icon ng-class="$tileCtrl.getCoffee(tile)" flex md-svg-icon="coffeemaker" aria-label="Kaffeemaschine"
+        </md-icon>
+    </md-button>
+
+    <!--<div ng-repeat="option in tile.options" ng-if="option.instanceType == 'coffeeTypes'">-->
+        <span ng-if="tile.options[0].state.empty">leer</span>
+    <span ng-if="!tile.options[0].state.empty">{{tile.options[1].state[tile.options[0].state.isactiv].value}} gekocht</span>
+
+    <!--</div>-->
+</div>
+
+<div ng-if="tile.instanceType == 'tv'">
+    <style type = "text/css">
+        #detail-tv-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-tv-{{tile.id}}" layout="row" class="" aria-label="TV an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'tv_on' : 'tv' }}">
+        </md-icon>
+    </md-button>
+<!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
+        {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
+    </md-switch> -->
+	<span ng-show="tile.options[0].state.on">{{tile.options[1].state[tile.options[0].state.isactiv].value}}</span>
+    <span ng-show="!tile.options[0].state.on">aus</span>
+</div>
+
+<div ng-if="tile.instanceType == 'fridge'">
+    <style type = "text/css">
+        #detail-fridge-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-fridge-{{tile.id}}" layout="row" class="" aria-label="Kühlschrank">
+        <md-icon flex md-svg-icon="fridge">
+        </md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.temperature}}&#8451;</span>
+</div>
+
+<div ng-if="tile.instanceType == 'lawnmower'">
+    <style type = "text/css">
+        #detail-lawnmower-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button ng-click="tile.options[0].state.on = !tile.options[0].state.on" class="sh-icon" ng-attr-id="detail-lawnmower-{{tile.id}}" layout="row" class="" aria-label="Rasenmäher an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'lawnmower_on' : 'lawnmower' }}" flex md-svg-icon="lawnmower">
+        </md-icon>
+    </md-button>
+
+
+	<span>{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'window'">
+    <style type = "text/css">
+        #detail-window-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-window-{{tile.id}}" layout="row" class="md-icon-button" aria-label="Fenster offen/zu" ng-click="tile.options[0].state.kipped = !tile.options[0].state.kipped">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.kipped ? 'window_3_open' : 'window_3_close' }}">
+        </md-icon>
+    </md-button>
+    <span>{{tile.options[0].state.kipped ? 'offen': 'geschlossen'}}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'audio'">
+    <style type = "text/css">
+        #detail-speaker-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-speaker-{{tile.id}}" layout="row" class="" aria-label="Audio an/aus" ng-click="tile.options[0].state.play = !tile.options[0].state.play">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.play ? 'speaker_on' : 'speaker' }}">
+        </md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.play ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'door'">
+    <style type = "text/css">
+        #detail-speaker-{{tile.id}} svg *{
+        fill: {{tile.options[0].state.color}};
+        stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-speaker-{{tile.id}}" layout="row" class="" aria-label="Audio an/aus" ng-click="tile.options[0].state.closed = !tile.options[0].state.closed">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.closed ? 'door_locked' : 'door_unlocked' }}">
+        </md-icon>
+    </md-button>
+    <span>{{tile.options[0].state.closed ? 'verriegelt' : 'entriegelt' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'rollo'">
+    <style type = "text/css">
+        #detail-rollo-{{tile.id}} svg *{
+          fill: {{tile.options[0].state.color}};
+          stroke : rgba(0,0,0,.5);
+        }
+        .perc0_17 .rollo1, .perc0_17 .rollo2, .perc0_17 .rollo3, .perc0_17 .rollo4,.perc0_17 .rollo5{
+            fill : none;
+        }
+        .perc17_34 .rollo2, .perc17_34 .rollo3, .perc17_34 .rollo4, .perc17_34 .rollo5 {
+            fill : none;
+        }
+        .perc34_50 .rollo3, .perc34_50 .rollo4, .perc34_50 .rollo5 {
+            fill : none;
+        }
+        .perc50_64 .rollo4, .perc50_64 .rollo5{
+            fill : none;
+        }
+        .perc64_83 .rollo5 {
+            fill : none;
+        }
+        /*.perc83_100 .rollo5 {*/
+            /*fill : none;*/
+        /*}*/
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-rollo-{{tile.id}}" layout="row"  aria-label="Rollo hoch/runter"  ng-click="$tileCtrl.rolloClick(tile)">
+        <md-icon flex md-svg-icon="rollo" ng-class="$tileCtrl.getRolloCls(tile)">
+        </md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.value}}%</span>
+</div>
+
+<div ng-if="tile.instanceType == 'alarmclock'">
+    <style type = "text/css">
+        #detail-alarmclock-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-alarmclock-{{tile.id}}" layout="row" class="" aria-label="Wecker an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'alarm_on' : 'alarm' }}">
+        </md-icon>
+    </md-button>
+<!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
+        {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
+    </md-switch> -->
+	<span ng-show="!tile.options[0].state.on">{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+    <span ng-show="tile.options[0].state.on">{{tile.options[0].state.on ? 'an' : 'aus' }} : {{tile.options[0].state.alarmtime | date : 'shortTime' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'tub'">
+    <style type = "text/css">
+        #detail-tub-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+        .temp15_20 .tub1{
+            fill : #87CEFA;
+        }
+        .temp20_25 .tub1 {
+            fill : #32CD32;
+        }
+        .temp25_30 .tub1 {
+            fill : #FFFF00;
+        }
+        .temp30_35 .tub1{
+            fill : #FFA500;
+        }
+        .perc35_40 .tub1 {
+            fill : #FF4500;
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-tub-{{tile.id}}" layout="row" class="" aria-label="Badewanne an/aus" ng-click="tile.options[0].state.blubberon = !tile.options[0].state.blubberon">
+		<md-icon flex md-svg-icon="{{tile.options[0].state.blubberon ? 'bathtub_on' : 'bathtub' }}" ng-class="$tileCtrl.getTubCls(tile)">
+		</md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.temperature}}&#8451;</span>
+
+</div>
+
+<div ng-if="tile.instanceType == 'washingmachine'">
+    <style type = "text/css">
+        #detail-washingmachine-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-washingmachine-{{tile.id}}" layout="row" class="" aria-label="Waschmaschine an/aus" ng-click="$tileCtrl.WashingmachineClick(tile)">
+		<md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'washingmachine_on' : 'washingmachine' }}" aria-label="Badewanne" ng-class="$tileCtrl.getTubCls(tile)">
+		</md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'dryer'">
+    <style type = "text/css">
+        #detail-dryer-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+	<md-button class="sh-icon" ng-attr-id="detail-dryer-{{tile.id}}" layout="row" class="" aria-label="Trockner an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+		<md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'washingmachine_on' : 'washingmachine' }}">
+		</md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'babymonitoring'">
+    <style type = "text/css">
+        #detail-baby-monitoring-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-baby-monitoring-{{tile.id}}" layout="row" class="" aria-label="Babyüberwachung an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'babymonitor_on' : 'babymonitor' }}" >
+        </md-icon>
+    </md-button>
+<!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
+        {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
+    </md-switch> -->
+	<span>{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'awning'">
+    <style type = "text/css">
+        #detail-awning-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-awning-{{tile.id}}" layout="row" class="" aria-label="Markise an/aus" ng-click="tile.options[0].state.on = !tile.options[0].state.on">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'marquee_out' : 'marquee' }}">
+        </md-icon>
+    </md-button>
+
+
+
+    <!--     <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="tile.options[0].state.on">
+            {{tile.options[0].state.on ? 'an': 'aus'}}geschalten
+        </md-switch> -->
+	<span>{{tile.options[0].state.on ? 'ausgefahren' : 'eingefahren' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'pool'">
+    <style type = "text/css">
+        #detail-pool-{{tile.id}} svg *{
+            fill: {{tile.options[0].state.color}};
+            stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button ng-click="tile.options[0].state.on = !tile.options[0].state.on" class="sh-icon" ng-attr-id="detail-pool-{{tile.id}}" layout="row" class="" aria-label="Pool">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'pool_closed' : 'pool' }}">
+        </md-icon>
+    </md-button>
+
+	<span>{{tile.options[0].state.value}}&#8451;  {{tile.options[0].state.on ? 'geschlossen' : 'offen' }}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'waterconsumption'">
+    <style type = "text/css">
+        #detail-waterconsumption-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-waterconsumption-{{tile.id}}" layout="row" class="" aria-label="Wasserverbrauch">
+        <md-icon flex md-svg-icon="waterdrop">
+        </md-icon>
+    </md-button>
+	<span>Heute: {{tile.options[0].state.today}} Liter</span>
+</div>
+
+<div ng-if="tile.instanceType == 'electroconsumption'">
+    <style type = "text/css">
+        #detail-waterconsumption-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-waterconsumption-{{tile.id}}" layout="row" class="" aria-label="Stromverbrauch">
+        <md-icon flex md-svg-icon="socket">
+        </md-icon>
+    </md-button>
+	<span>Heute: {{tile.options[0].state.today}}  kwH</span>
+</div>
+
+<div ng-if="tile.instanceType == 'energytipp'">
+    <style type = "text/css">
+        #detail-energytipp-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-energytipp-{{tile.id}}" layout="row" class="" aria-label="Tipp">
+        <md-icon flex md-svg-icon="information">
+        </md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.tipps[tile.options[0].state.activ].value}}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'photovol'">
+    <style type = "text/css">
+        #detail-photovoltaik-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-photovoltaik-{{tile.id}}" layout="row" class="" aria-label="Photovoltaik">
+        <md-icon flex md-svg-icon="energy_2">
+        </md-icon>
+    </md-button>
+	<span>Heute erzeugt: {{tile.options[0].state.today}}  kwH</span>
+</div>
+
+<div ng-if="tile.instanceType == 'securitycam'">
+    <style type = "text/css">
+        #detail-camera-{{tile.id}} svg *{
+			fill: {{tile.options[0].state.color}};
+			stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-attr-id="detail-camera-{{tile.id}}" ng-click="tile.options[0].state.on = !tile.options[0].state.on" layout="row" class="" aria-label="Kamera">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'camera_on' : 'camera' }}">
+        </md-icon>
+    </md-button>
+	<span>{{tile.options[0].state.on ? 'an' : 'aus'}}</span>
+</div>
+
+<div ng-if="tile.instanceType == 'motiondetector'">
+    <style type = "text/css">
+        #detail-motiondetector-{{tile.id}} svg *{
+        fill: {{tile.options[0].state.color}};
+        stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-click="tile.options[0].state.on = !tile.options[0].state.on" ng-attr-id="detail-motiondetector-{{tile.id}}" layout="row" class="" aria-label="Bewegungsmelder">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'motiondetector_on' : 'motiondetector' }}">
+        </md-icon>
+    </md-button>
+    <span></span>
+    <span ng-if="tile.options[0].state.on">an : Personen im Haus</span>
+    <span ng-if="!tile.options[0].state.on">aus</span>
+</div>
+
+<div ng-if="tile.instanceType == 'additionalfunc'">
+    <style type = "text/css">
+        #detail-additionalfunc-{{tile.id}} svg *{
+        fill: {{tile.options[0].state.color}};
+        stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <md-button class="sh-icon" ng-click="$tileCtrl.showAlert(tile,$event)" ng-attr-id="detail-additionalfunc-{{tile.id}}" layout="row" class="" aria-label="Geraet hinzufueguen">
+        <md-icon flex md-svg-icon="addfunc">
+        </md-icon>
+    </md-button>
+</div>
+
+<div ng-if="tile.instanceType == 'electronicpic'">
+    <style type = "text/css">
+        #detail-additionalfunc-{{tile.id}} svg *{
+        fill: {{tile.options[0].state.color}};
+        stroke : rgba(0,0,0,.5);
+        }
+    </style>
+    <span>{{tile.options[0].state.on ? 'an' : 'aus' }}</span>
+    <md-button class="sh-icon" ng-click="tile.options[0].state.on = !tile.options[0].state.on " ng-attr-id="detail-additionalfunc-{{tile.id}}" layout="row" class="" aria-label="Geraet hinzufueguen">
+        <md-icon flex md-svg-icon="{{tile.options[0].state.on ? 'frame_on' : 'frame_off' }}"></md-icon>
+    </md-button>
+</div>
+

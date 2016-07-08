@@ -1,0 +1,16 @@
+<div class="wholeGridClass" ng-controller="GridController as gc">
+    <div class="gridcontainerClass">
+        <div class="gridSystemClass gridwrapper">
+            <div class="gridcontent" ng-repeat="(key,value) in rooms" ng-hide="!bookmark_running && (key == 'energy' || key == 'security')">
+				<div class="realGridContent">
+					<div class="sh-wrapper">
+						<md-button aria-label="Link zu {{value.label}}" class="sh-icon-room" ng-href="#/rooms/{{key}}">
+						</md-button>
+						<md-icon class="roomTileIcon" md-svg-icon="{{value.iconName}}"></md-icon>
+						<span>{{value.label}}</span>
+					<div>
+				<div>
+            </div>
+        </div>
+    </div>
+</div>

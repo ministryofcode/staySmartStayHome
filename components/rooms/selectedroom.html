@@ -1,0 +1,20 @@
+<div class="wholeGridClass"  ng-controller="GridController as gc">
+    <div class="gridcontainerClass">
+        <div class="gridSystemClass gridwrapper">
+            <div class="gridcontent"
+                 ng-repeat="functionality in $ctrl.activeRoom.functionalities"
+                 ng-attr-id="{{ 'grid-' + functionality.id +'-' + $index }}"> 
+				 <div class="realGridContent">
+				 
+					<sh-tile tile-data="functionality"
+							 single-expand="$ctrl.activeRoom.functionalities"
+							 on-expand-change="gc.toogleGridTile($index,functionality)">
+
+						<sh-tile-details sh-func="functionality"></sh-tile-details>
+					</sh-tile>
+				
+				 </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+
+<!-- ng-repeat="option in functionality.options"-->
+
+<form  ng-controller="ChartController">
+
+
+<canvas id="line" class="chart chart-line" chart-data="dataWaterMonth"
+        chart-labels="labelsWaterMonth" chart-series="seriesWaterMonth" chart-options="optionsWaterMonth"
+        chart-dataset-override="datasetOverrideWaterMonth"> </canvas>
+
+
+
+    <!-- button wird nur im szene/regel-add-modus angezeigt-->
+    <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle>
+</form>
+

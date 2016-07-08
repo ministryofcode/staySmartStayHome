@@ -1,0 +1,20 @@
+<form ng-repeat="option in functionality.options">
+
+    <div>
+        <label> Temperatur: </label> {{option.state.temperature}} &#8451;
+        <md-slider flex ng-model="option.state.temperature" min="15" max="40" step="1" aria-label="blue" id="blue-slider" class="md-primary">
+    </div>
+
+    <div ng-show="option.state.blubberon">
+        <p>Blubberblasen aktiviert</p>
+    </div>
+    <div ng-show="!option.state.blubberon">
+        <p>Blubberblasen deaktiviert</p>
+    </div>
+
+
+
+
+    <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle>
+</form>
+

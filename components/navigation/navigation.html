@@ -1,0 +1,19 @@
+
+<!--overflow menu items reverse-->
+<ul id="sh-nav-menu-overflow" >
+    <li ng-repeat="item in menueItemsOverflow" ng-class="{'nav-highlight' : item.highlight }">
+        <a ng-href="{{item.href}}">
+            <img ng-src="{{item.imgSrc}}">
+            <span>{{item.label}}</span>
+        </a>
+    </li>
+</ul>
+<!--always visible menu -->
+<ul id="sh-nav-menu">
+    <li ng-repeat="item in menueItems" ng-class="{'nav-highlight' : item.highlight }">
+        <a ng-href="{{item.href}}" ng-attr-id="{{item.id}}">
+            <img ng-src="{{item.imgSrc}}">
+            <span>{{item.label}}</span>
+        </a>
+    </li>
+</ul>

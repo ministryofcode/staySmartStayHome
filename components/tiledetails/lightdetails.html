@@ -1,0 +1,49 @@
+<form class="tileDetails tileDetailsSize2" ng-repeat="option in functionality.options">
+	<style type = "text/css">
+		.detail-light-red svg *{
+		   fill: #FF4500;
+		   stroke : rgba(0,0,0,.5);
+		}
+		.detail-light-green svg *{
+		   fill: #32CD32;
+		   stroke : rgba(0,0,0,.5);
+		}
+		.detail-light-blue svg *{
+		   fill: #143B7E;
+		   stroke : rgba(0,0,0,.5);
+		}
+	</style>
+	<div class="tileDetails_0 tileDetails_1_2-3">
+		<div class="tileDetails_1 tileDetails_4_1">
+			<span>Individuell</span>
+			<color-picker
+				ng-model="option.state.color" ng-click="option.state.on = true;"
+				color-picker-disabled="false"
+				color-picker-format="	'rgb'"
+				color-picker-alpha="false"
+				color-picker-swatch="true"
+				color-picker-swatch-pos="'left'"
+				color-picker-swatch-only="true"
+				color-picker-pos="'bottom left'"
+				color-picker-inline="false"
+				color-picker-on-change="onChange($event, color)"
+			></color-picker>
+		</div>
+		<div class="tileDetails_1 tileDetails_4-3_1">
+			<span class="lightDetailsSpanCenter">Vordefiniert</span>
+			<md-button class="sh-icon detail-light-red" layout="row" aria-label="Beleuchtung in rot" ng-click="option.state.color= '#FF4500';">
+				<md-icon flex md-svg-icon="{{option.state.on ? 'bulb_with_light' : 'bulb_no_light' }}">
+			</md-button>
+			<md-button class="sh-icon detail-light-green" layout="row" aria-label="Beleuchtung in grün" ng-click="option.state.color= '#32CD32';">
+				<md-icon flex md-svg-icon="{{option.state.on ? 'bulb_with_light' : 'bulb_no_light' }}">
+			</md-button>
+			<md-button class="sh-icon detail-light-blue" layout="row" aria-label="Beleuchtung in blau" ng-click="option.state.color= '#143B7E';">
+				<md-icon flex md-svg-icon="{{option.state.on ? 'bulb_with_light' : 'bulb_no_light' }}">
+			</md-button>
+		</div>
+	</div>
+	<div class="tileDetails_0 tileDetails_1_2-2">
+		<span>Intensität {{option.state.intensity}} %</span>
+		<md-slider flex ng-model="option.state.intensity" min="0" max="100" aria-label="blue" id="blue-slider" class="md-primary">
+	</div>
+</form>

@@ -1,0 +1,16 @@
+<form ng-repeat="option in functionality.options">
+
+    <div ng-show="option.inputmodi.slider">
+        <label for="temperaturePool"> Temperatur: </label> {{option.state.value}} &#8451;
+        <!--<input ng-model="option.state.intensity"  type="number"-->
+        <!--name="intensity" min="0"" max="100">-->
+
+        <md-slider flex ng-model="option.state.value" min="15" max="30" aria-label="blue" id="blue-slider" class="md-primary">
+
+    </div>
+
+
+    <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle>
+</form>
+
+

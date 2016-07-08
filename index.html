@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="app" ng-strict-di class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="app" ng-strict-di class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="app" ng-strict-di class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="app" ng-strict-di class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SmartHome</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Stuff to bind iOS and Android Web-App Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="img/android_icon.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/apple_icon.png"/>
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <!--ColorPicker from http://ruhley.github.io/angular-color-picker/-->
+    <link rel="stylesheet" href="bower_components/angular-color-picker/dist/angularjs-color-picker.min.css"/>
+
+    <!--ColorPicker-->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div id="imageLoaderDiv" onClick="CloseImgFullSize()">
+	<img id="imageLoaderImg">
+</div>
+<div id="wrapperHeaderMain">
+
+    <header>
+        <div sh-top-header></div>
+    </header>
+
+    <main ng-view class="view-anim">
+
+    </main>
+
+</div>
+
+<footer ng-controller="NavigationController">
+    <nav sh-bottom-navigation></nav>
+</footer>
+
+
+<!-- In production use: <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script> -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+
+<script src="bower_components/Chart.js/Chart.js"></script>
+<script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+
+
+<!--ColorPicker from http://ruhley.github.io/angular-color-picker/-->
+<script src="bower_components/tinycolor/tinycolor.js"></script>
+<script src="bower_components/angular-color-picker/dist/angularjs-color-picker.min.js"></script>
+<!--ColorPicker-->
+<script src="app.js"></script>
+<script src="useJQueryUI/useJQueryUI.js"></script>
+<script src="components/home/home.js"></script>
+<script src="components/rooms/rooms.js"></script>
+<script src="components/scenarios/scenarios.js"></script>
+<script src="components/rules/rules.js"></script>
+<script src="components/weather/weather.js"></script>
+<script src="components/settings/settings.js"></script>
+<script src="components/header/header.js"></script>
+<script src="components/navigation/navigation.js"></script>
+<script src="components/tile/tile.js"></script>
+<script src="components/tiledetails/tiledetails.js"></script>
+<script src="components/services/models.js"></script>
+<script src="components/services/sharedData.js"></script>
+<script src="components/bookmarking/bookmarking.js"></script>
+<script src="components/directive/sh-icon.js"></script>
+<script src="components/grid/grid.js"></script>
+<script src="components/services/breadcrumbs.js"></script>
+<script src="components/services/routelabels.js"></script>
+
+<script src="components/audio/audio.js"></script>
+
+</body>
+</html>

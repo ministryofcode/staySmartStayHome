@@ -1,0 +1,21 @@
+<form layout="column" layout-align="center center">
+    <md-input-container>
+        <label>Regelbezeichnung</label>
+        <input type='text' ng-model='$ctrl.rule.label'>
+    </md-input-container>
+    <md-input-container>
+        <md-switch ng-model="$ctrl.active">{{$ctrl.active ? 'aktiv' : 'inaktiv'}}</md-switch>
+    </md-input-container>
+
+    <!--<div layout="row">-->
+    <!--<md-button ng-click="$ctrl.onAddCondition($ctrl.rule)">-->
+    <!--<md-icon md-svg-icon="add"></md-icon>-->
+    <!--<md-tooltip md-direction="top">Bedingung hinzufügen</md-tooltip>-->
+    <!--</md-button>-->
+
+    <!--<md-button ng-click="$ctrl.onDelete($ctrl.rule)">-->
+    <!--Delete-->
+    <!--<md-tooltip md-direction="top">Regel entfernen</md-tooltip>-->
+    <!--</md-button>-->
+    <!--</div>-->
+</form>

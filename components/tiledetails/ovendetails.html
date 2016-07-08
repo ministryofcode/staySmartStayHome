@@ -1,0 +1,38 @@
+<!-- <form ng-repeat="option in functionality.options">
+    <hr>
+    <h3>{{option.label}}</h3>
+
+    <div ng-show="option.state.on">
+        
+        <div ng-show="option.state.alarm">
+            
+        </div>
+    </div>
+
+    <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="option.state.alarm">
+        Alarm {{option.state.alarm ? 'an': 'aus'}}geschalten
+    </md-switch>
+
+
+
+    <div ng-show="option.state.alarm">
+        Alarm in {{option.state.alarmtime}} Minuten
+        <md-slider flex ng-model="option.state.alarmtime" min="1" max="60" aria-label="blue" id="blue-slider" class="md-primary"/>
+    </div>
+</form> -->
+
+<form class="tileDetails tileDetailsSize2" ng-repeat="option in functionality.options">
+	<div class="tileDetails_0 tileDetails_1_3">
+		<span>Temperatur {{option.state.temperatur}} &#8451;</span>
+		<md-slider flex ng-model="option.state.temperatur" min="0" max="250" aria-label="blue"  class="md-primary"/>
+	</div>
+    <div class="tileDetails_0 tileDetails_1_3">
+		<span>Alarm:</span>
+		<md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="option.state.alarm">
+			<span ng-show="option.state.alarm">In {{option.state.alarmtime}} Minuten</span>
+		</md-switch>
+	</div>
+    <div class="tileDetails_0 tileDetails_1_3" ng-show="option.state.alarm">
+        <md-slider flex ng-model="option.state.alarmtime" min="1" max="60" aria-label="blue" id="blue-slider" class="md-primary"/>
+    </div>
+</form>

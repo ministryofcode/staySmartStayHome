@@ -1,0 +1,19 @@
+<form class="tileDetails tileDetailsSize1" ng-repeat="option in functionality.options" ng-if="option.instanceType == 'washingmachineModeOptions'">
+
+    <div class="tileDetails_0 tileDetails_1_5">
+		<span> Aktuelles Waschprogramm: </span> 
+		<span> {{option.state[functionality.options[0].state.isactiv].value}} </span> 
+	</div>
+    <div class="tileDetails_0 tileDetails_1_5-4">
+		<md-radio-group ng-model="functionality.options[0].state.isactiv">
+			<md-radio-button ng-repeat="se in option.state" value="{{$index}}">{{se.value}}</md-radio-button>
+		</md-radio-group>	
+    </div>
+    <!-- <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle> -->
+</form>
+
+<!-- <div ng-controller="progressController" ng-repeat="option in functionality.options" ng-if="option.instanceType == 'washingmachineModeOptions'">
+    <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-linear>
+</div> -->
+
+

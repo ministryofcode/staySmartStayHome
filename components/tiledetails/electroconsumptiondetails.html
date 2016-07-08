@@ -1,0 +1,26 @@
+
+<!-- ng-repeat="option in functionality.options"-->
+
+<form  ng-controller="ChartController">
+
+
+    <canvas id="line" class="chart chart-line" chart-data="dataElectroDay"
+            chart-labels="labels" chart-series="series" chart-options="optionsElectroDay"
+            chart-dataset-override="datasetOverrideElectroDay" chart-colors="#ff0000"> </canvas>
+
+    <!--
+        <hr>
+        <h3>{{option.label}}</h3>
+    {{option.state.labels}}:
+        {{option.state.data}}:
+        {{option.state.series}}:
+        {{option.state.datasetOverride}}
+
+        <canvas id="line" class="chart chart-line" chart-data="{{option.state.data}}"
+                chart-labels="{{option.state.labels}}" chart-series="{{option.state.series}}" chart-options="options"
+                chart-dataset-override="{{option.state.datasetOverride}}" > </canvas>
+
+        <!-- button wird nur im szene/regel-add-modus angezeigt-->
+    <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle>
+</form>
+

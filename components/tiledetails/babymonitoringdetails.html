@@ -1,0 +1,18 @@
+<form class="tileDetails tileDetailsSize4" ng-repeat="option in functionality.options">
+    <div class="tileDetails_0 tileDetails_1_5">
+        <span ng-show="!option.state.on">Kamera ausgeschaltet</span>
+	</div>
+    <div class="tileDetails_0 tileDetails_1_5-4">
+		<md-content>
+			<md-tooltip md-direction="top">Bild durch Anklicken vergrößern</md-tooltip>
+			<md-tabs>
+				<md-tab label="Kamera 1">
+					<md-content class="md-padding">
+						<img ng-show="option.state.on" ng-src="{{option.state.source}}" alt="Überwachungskamera" onClick="loadImgToFullSize('img/babycampic.jpg')"/>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>	
+    </div>
+	 <!-- <sh-opt-bookmark-toogle option="option"></sh-opt-bookmark-toogle> -->
+</form>

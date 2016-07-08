@@ -1,0 +1,124 @@
+<form name="form" layout="column">
+    <div layout="column" layout-aling="start" layout-gt-md="row" layout-align-gt-md="start center">
+    <div layout="row" layout-align="center" flex>
+        <md-input-container>
+            <md-tooltip>Bedingungsbezeichung</md-tooltip>
+            <label>Bedingungsbezeichung</label>
+            <input ng-model="$ctrl.condition.label" type="text" name="condlabel" required>
+        </md-input-container>
+        <div ng-show="form.$submitted || form.cond-label.$touched">
+
+            <div ng-show="form.condlabel.$error.required">Bitte Bezeichnung angeben</div>
+        </div>
+
+        <md-input-container flex>
+            <md-tooltip>Art der Bedingung</md-tooltip>
+            <label>Bedingungsart</label>
+            <md-select ng-model="$ctrl.condition.type" required">
+                <md-option ng-repeat="cond in $ctrl.conditionTypes"
+                           ng-value="cond">
+                    {{cond}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <md-input-container flex ng-show="!!$ctrl.narrowBy[$ctrl.condition.type]">
+        <label>Einschränken mit</label>
+        <md-select ng-model="$ctrl.narrowBySelection" multiple>
+            <md-optgroup label="Einschränken">
+                <md-option ng-value="val" ng-repeat="val in $ctrl.narrowBy[$ctrl.condition.type]">
+                    {{val}}
+                </md-option>
+            </md-optgroup>
+        </md-select>
+    </md-input-container>
+
+
+    <!--ZEIT UHRZEIT -->
+    <div layout="row" layout-align="center"
+         ng-show="$ctrl.condition.type=='Zeit' && $ctrl.narrowBySelection.indexOf('Uhrzeit')>=0">
+        <md-input-container flex>
+            <label>Von</label>
+            <input ng-model="$ctrl.condition.startTime" type="time">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Bis</label>
+            <input ng-model="$ctrl.condition.endTime" type="time">
+        </md-input-container>
+        <md-tooltip direction="top">Zeitinterval, innerhalb dessen diese Bedingung greift</md-tooltip>
+    </div>
+
+    <!--ZEIT TAGE -->
+    <md-input-container flex ng-show="$ctrl.condition.type=='Zeit' && $ctrl.narrowBySelection.indexOf('Tage')>=0">
+        <label>An diesen Tagen</label>
+        <md-select ng-model="$ctrl.condition.days" multiple>
+            <md-optgroup label="Tage">
+                <md-option ng-value="day"
+                           ng-repeat="day in $ctrl.days">
+                    {{day}}
+                </md-option>
+            </md-optgroup>
+        </md-select>
+    </md-input-container>
+    <!--ZEIT MONATE -->
+    <md-input-container flex
+                        ng-show="$ctrl.condition.type=='Zeit' && $ctrl.narrowBySelection.indexOf('Monate')>=0">
+        <label>In diesen Monaten</label>
+        <md-select ng-model="$ctrl.condition.months" multiple>
+            <md-optgroup label="Monate">
+                <md-option ng-value="month"
+                           ng-repeat="month in $ctrl.months">
+                    {{month}}
+                </md-option>
+            </md-optgroup>
+        </md-select>
+    </md-input-container>
+
+    <!--Wetter regen -->
+    <md-input-container
+            ng-model="$ctrl.condition.months"
+            ng-show="$ctrl.condition.type=='Wetter' && $ctrl.narrowBySelection.indexOf('Regen')>=0"
+            flex layout-align="center">
+        <md-switch>Bei Regen</md-switch>
+    </md-input-container>
+    <!--Wetter temperatur -->
+    <md-input-container
+            ng-show="$ctrl.condition.type=='Wetter' && $ctrl.narrowBySelection.indexOf('Temperatur')>=0"
+            flex layout-align="center">
+
+        <label>Temperatur</label>
+        <input type="number" min="-25" max="50" step="1" placeholder="0"/>
+    </md-input-container>
+
+    <!--Wetter wind -->
+    <md-input-container
+            ng-show="$ctrl.condition.type=='Wetter' && $ctrl.narrowBySelection.indexOf('Windgeschwindigkeit')>=0"
+            layout="row" flex layout-align="center">
+
+        <label>Windgeschwindigkeit</label>
+        <md-input-container flex>
+            <md-tooltip>Mindest Windgeschwindigkeit (km/h)</md-tooltip>
+            <label>Von</label>
+            <input ng-model= "$ctrl.condition.windSpeedStart" type="number" min="0" step="1">
+        </md-input-container>
+        <md-input-container flex>
+            <md-tooltip>Maximale Windgeschwindigkeit (km/h)</md-tooltip>
+            <label>Bis</label>
+            <input ng-model= "$ctrl.condition.windSpeedEnd" type="number" min="0" step="1">
+        </md-input-container>
+
+    </md-input-container>
+
+    <!--Wetter regen -->
+
+    <md-input-container ng-show="$ctrl.condition.type=='Anwesenheit'"
+            flex layout-align="center">
+        <md-switch class="md-primary" md-no-ink ng-model="$ctrl.condition.presence">Es befindet sich {{$ctrl.condition.presence ? 'Jemand ' : 'Niemand '}} im SmartHome</md-switch>
+    </md-input-container>
+    </div>
+
+
+
+    {{$ctrl.condition}}
+</form>

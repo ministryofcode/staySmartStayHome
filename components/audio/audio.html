@@ -1,0 +1,77 @@
+<!-- <div layout="column">
+    <div layout="row" layout-align="center left">
+        <md-button ng-click="$ctrl.togglePlay()" aria-label="Play/Stop Song">
+            <md-icon md-svg-icon="{{$ctrl.play ? 'mp_stop' :'mp_play' }}">
+        </md-button>
+        <md-button ng-click="$ctrl.prev()" aria-label="Previous Song">
+            <md-icon md-svg-icon='mp_bwd'>
+        </md-button>
+        <md-button ng-click="$ctrl.next()" aria-label="NextSong">
+            <md-icon md-svg-icon='mp_fwd'>
+        </md-button>
+        <md-menu-divider></md-menu-divider>
+        <div flex ng-show="$ctrl.isPlaying">
+            {{$ctrl.currentSong.name}}
+            <progress value="{{$ctrl.secondsPlayed}}" max="{{$ctrl.currentSong.duration}}"></progress>
+        </div>
+        {{$ctrl.secondsPlayed}}/{{$ctrl.currentSong.duration}}
+        <md-slider-container>
+            <span>Volume:{{$ctrl.volume}}</span>
+            <md-slider flex ng-value="$ctrl.volume"
+                       min="0" max="100" aria-label="Volume"
+                       class="md-primary"></md-slider>
+        </md-slider-container>
+    </div>
+
+    <md-list>
+        <md-subheader class="md-no-sticky">Lieder:</md-subheader>
+
+        <md-list-item ng-repeat="song in $ctrl.songs" ng-click="$ctrl.playSong(song.name)" class="noright">
+            <img alt="{{ song.name }}" ng-src="{{ song.img }}" class="md-avatar"/>
+            <p>{{ song.name }}</p>
+
+        </md-list-item>
+    </md-list>
+
+
+
+</div> -->
+
+
+<form class="tileDetails tileDetailsSize4">
+    <div class="tileDetails_0 tileDetails_1_5">
+        <md-button ng-click="$ctrl.togglePlay()" aria-label="Play/Stop Song">
+            <md-icon md-svg-icon="{{$ctrl.play ? 'mp_stop' :'mp_play' }}">
+        </md-button>
+        <md-button ng-click="$ctrl.prev()" aria-label="Previous Song">
+            <md-icon md-svg-icon='mp_bwd'>
+        </md-button>
+        <md-button ng-click="$ctrl.next()" aria-label="NextSong">
+            <md-icon md-svg-icon='mp_fwd'>
+        </md-button>
+        <md-menu-divider></md-menu-divider>
+        <div flex ng-show="$ctrl.isPlaying">
+            {{$ctrl.currentSong.name}}
+            <progress value="{{$ctrl.secondsPlayed}}" max="{{$ctrl.currentSong.duration}}"></progress>
+        </div>
+        {{$ctrl.secondsPlayed}}/{{$ctrl.currentSong.duration}}
+        <md-slider-container>
+            <span>Volume:{{$ctrl.volume}}</span>
+            <md-slider flex ng-value="$ctrl.volume"
+                       min="0" max="100" aria-label="Volume"
+                       class="md-primary"></md-slider>
+        </md-slider-container>
+	</div>
+    <div class="tileDetails_0 tileDetails_1_5-4">
+		<md-list>
+			<md-subheader class="md-no-sticky">Liederauwahl:</md-subheader>
+
+			<md-list-item ng-repeat="song in $ctrl.songs" ng-click="$ctrl.playSong(song.name)" class="noright">
+				<img alt="{{ song.name }}" ng-src="{{ song.img }}" class="md-avatar"/>
+				<p>{{ song.name }}</p>
+
+			</md-list-item>
+		</md-list>	
+    </div>
+</form>
+

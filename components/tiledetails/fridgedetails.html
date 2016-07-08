@@ -1,0 +1,28 @@
+<form class="tileDetails tileDetailsSize4" ng-repeat="option in functionality.options">
+    <div class="tileDetails_0 tileDetails_1_5">
+		<span> Temperatur </span>
+        <md-slider flex ng-model="option.state.temperature" min="2" max="15" aria-label="blue" id="blue-slider" class="md-primary"/>
+	</div>
+    <div class="tileDetails_0 tileDetails_1_5-4">
+		<md-content>
+			<md-tooltip md-direction="top">Bild durch Anklicken vergrößern</md-tooltip>
+			<md-tabs>
+				<md-tab label="Kamera 1">
+					<md-content class="md-padding">
+						<img ng-src="{{option.state.picUp}}" onClick="loadImgToFullSize('img/fridgeUp.jpg')" />
+					</md-content>
+				</md-tab>
+				<md-tab label="Kamera 2">
+					<md-content class="md-padding">
+						<img ng-src="{{option.state.picdoor}}" onClick="loadImgToFullSize('img/fridgeUp2.jpg')"  />
+					</md-content>
+				</md-tab>
+				<md-tab label="Kamera 3">
+					<md-content class="md-padding">
+						<img ng-src="{{option.state.picVegie}}" onClick="loadImgToFullSize('img/fridgeVeggie.jpg')"  />
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>	
+    </div>
+</form>
